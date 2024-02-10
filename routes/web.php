@@ -1,4 +1,6 @@
 <?php
+namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\Route;
 
