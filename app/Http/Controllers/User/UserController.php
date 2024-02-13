@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('Home.User.user_profile');
+        return view('User.user_profile');
     }
 
 
@@ -93,13 +93,13 @@ class UserController extends Controller
     public function myreviews()
     {
         $reviews = Review::where('user_id', Auth::user()->id)->get();
-        return view('Home.User.Reviews.user_reviews', ['reviews' => $reviews]);
+        return view('User.Reviews.user_reviews', ['reviews' => $reviews]);
     }
 
     public function editMyReview($id)
     {
         // $review = Review::find($id);
-        // return view('Home.User.Reviews.edit_review', ['review' => $review]);
+        // return view('User.Reviews.edit_review', ['review' => $review]);
     }
 
     public function deleteMyReview($id)
@@ -117,20 +117,20 @@ class UserController extends Controller
         // $data->rate = $request->input('rate');
         // $data->save();
 
-        // return view('Home.User.Reviews.user_reviews', ['reviews' => $reviews])->with('success', 'Review Updated Successfully!');
+        // return view('User.Reviews.user_reviews', ['reviews' => $reviews])->with('success', 'Review Updated Successfully!');
     }
 
     //Message
     public function mymessages()
     {
         $messages = Message::where('email', Auth::user()->email)->get();
-        return view('Home.User.Message.user_messages', ['messages' => $messages]);
+        return view('User.Message.user_messages', ['messages' => $messages]);
     }
 
     public function edit_mymessage($id)
     {
         // $review = Review::find($id);
-        // return view('Home.User.Message.edit_message', ['review' => $review]);
+        // return view('User.Message.edit_message', ['review' => $review]);
     }
 
     public function delete_mymessage($id)
@@ -142,7 +142,7 @@ class UserController extends Controller
     public function show_mymessage($id)
     {
         $message = Message::find($id);
-        return view('Home.User.Message.message_show', ['message'=>$message]);
+        return view('User.Message.message_show', ['message'=>$message]);
     }
 
     public function update_mymessage(Request $request, $id)
@@ -154,7 +154,7 @@ class UserController extends Controller
         // $data->rate = $request->input('rate');
         // $data->save();
 
-        // return view('Home.User.Reviews.user_reviews', ['reviews' => $reviews])->with('success', 'Review Updated Successfully!');
+        // return view('User.Reviews.user_reviews', ['reviews' => $reviews])->with('success', 'Review Updated Successfully!');
     }
 
     public function logout(request $request){

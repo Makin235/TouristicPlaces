@@ -164,7 +164,7 @@ class PlaceController extends Controller
     {
         $categories = Category::with('children')->get();
         $place = Place::find($id);
-        return view('Home.place_detail', [
+        return view('User.place_detail', [
             'place' => $place,
             'categories' => $categories,
         ]);

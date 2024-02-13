@@ -21,7 +21,7 @@ class UserPlaceController extends Controller
     public function index(Place $place)
     {
         $places = Place::where('user_id', Auth::id())->get();
-        return view('Home.User.Places.places', ['places' => $places]);
+        return view('User.Places.places', ['places' => $places]);
     }
 
     /**
@@ -92,7 +92,7 @@ class UserPlaceController extends Controller
 
         $categories = Category::with('children')->get();
         $place = Place::find($id);
-        return view('Home.User.Places.edit_place', [
+        return view('User.Places.edit_place', [
             'place' => $place,
             'categories' => $categories,
         ]);
@@ -150,7 +150,7 @@ class UserPlaceController extends Controller
     public function add(Request $request)
     {
         $categories = Category::with('children')->get();
-        return view('Home.User.Places.add_place', ['categories' => $categories]);
+        return view('User.Places.add_place', ['categories' => $categories]);
     }
 
     //Place Detail
@@ -164,7 +164,7 @@ class UserPlaceController extends Controller
     {
         $categories = Category::with('children')->get();
         $place = Place::find($id);
-        return view('Home.place_detail', [
+        return view('User.place_detail', [
             'place' => $place,
             'categories' => $categories,
         ]);

@@ -58,7 +58,7 @@ class UserPlaceGalleryController extends Controller
     {
         $place = Place::find($place_id);
         $images = Image::all()->where('place_id', $place_id);
-        return view('Home.User.Places.images_gallery', [
+        return view('User.Places.images_gallery', [
             'place' => $place,
             'images' => $images
         ]);
