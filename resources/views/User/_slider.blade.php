@@ -7,12 +7,13 @@
     </ol>
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
-        <div class="item">
-            <a href="">
-                <img src="" class="" width="100%" alt="" style="  height:85vh">
+        @foreach($sliders as $key=>$rs)
+        <div class="item {{$key === 0 ? 'active' : '' }}">
+            <a href="{{route('place_detail', ['id'=>$rs->id, 'slug'=>$rs->slug])}}">
+                <img src="{{Storage::url($rs->image)}}" class="" width="100%" alt="" style="  height:85vh">
             </a>
             <div class="carousel-caption">
-                <h3 style="color:white">Title</h3>
+                <h3 style="color:white">{{$rs->title}}</h3>
                 <p></p>
             </div>
         </div>
@@ -25,5 +26,6 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
             <span class="sr-only">Next</span>
         </a>
+        @endforeach
     </div>
 </div>

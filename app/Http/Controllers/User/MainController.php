@@ -18,56 +18,56 @@ use App\Models\Like;
 class MainController extends Controller
 {
     public static function categoryList() {
-        //return Category::where('parent_id','=', 0)->with('children')->get();
+        return Category::where('parent_id','=', 0)->with('children')->get();
     }
 
     public static function getSetting() {
-        //return Setting::first();
+        return Setting::first();
     }
 
     public static function mostVisitedAttractions() {
-        //return Place::where('status', '=', 'True')->Limit(4)->inRandomOrder()->get();
+        return Place::where('status', '=', 'True')->Limit(4)->inRandomOrder()->get();
     }
 
     public static function hotels() {
-        //return Place::where('status', '=', 'True')->Limit(4)->orderByDesc('id')->get();
+        return Place::where('status', '=', 'True')->Limit(4)->orderByDesc('id')->get();
     }
 
     public static function towers() {
-        //return Place::where('category_id', 14)->where('status', '=', 'True')->Limit(4)->orderByDesc('id')->get();
+        return Place::where('category_id', 14)->where('status', '=', 'True')->Limit(4)->orderByDesc('id')->get();
     }
 
     public static function countReviews($id) {
-        //return Review::where('place_id', $id)->where('status', '=', 'Active')->count();
+        return Review::where('place_id', $id)->where('status', '=', 'Active')->count();
     }
 
     public static function countLikes($id) {
-        //return Like::where('place_id', $id)->count();
+        return Like::where('place_id', $id)->count();
     }
 
     public static function checkLike($place_id) {
         if (Auth::user()) {
-            //return Like::where('user_id', Auth::user()->id)->where('place_id', $place_id)->count();
+            return Like::where('user_id', Auth::user()->id)->where('place_id', $place_id)->count();
         } else {
             return 0;
         }
     }
 
     public static function avgReviews($id) {
-        //return Review::where('place_id', $id)->where('status', '=', 'Active')->average('rate');
+        return Review::where('place_id', $id)->where('status', '=', 'Active')->average('rate');
     }
 
     public function main() {
-        //$settings = Setting::first();
-        //$sliders = Place::select('title', 'image', 'id', 'slug')->where('status', '=', 'True')->Limit(3)->inRandomOrder()->get();
-        //$mostVisited = Place::where('status', '=', 'True')->Limit(6)->inRandomOrder()->get();
-        //$holidays = Place::where('status', '=', 'True')->Limit(3)->orderByDesc('id')->get();
+        $settings = Setting::first();
+        $sliders = Place::select('title', 'image', 'id', 'slug')->where('status', '=', 'True')->Limit(3)->inRandomOrder()->get();
+        $mostVisited = Place::where('status', '=', 'True')->Limit(6)->inRandomOrder()->get();
+        $holidays = Place::where('status', '=', 'True')->Limit(3)->orderByDesc('id')->get();
         return view('user.main', [
-            //'sliders' => $sliders,
-            //'settings' => $settings,
+            'sliders' => $sliders,
+            'settings' => $settings,
             'page' => 'home',
-            //'mostVisited' => $mostVisited,
-            //'holidays' => $holidays
+            'mostVisited' => $mostVisited,
+            'holidays' => $holidays
         ]);
     }
 
@@ -118,7 +118,7 @@ class MainController extends Controller
             return redirect()->route('place_detail',['id' => $place->id, 'slug'=>$place->slug]);
         }
         else {
-            return redirect()->route('placeslist', ['search'=>$search]);
+            //return redirect()->route('placeslist', ['search'=>$search]);
         }
     }
 

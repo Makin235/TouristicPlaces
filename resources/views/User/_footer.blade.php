@@ -9,32 +9,60 @@ $towers = \App\Http\Controllers\User\MainController::towers();
             <div class="row row-bottom-padded-md">
                 <div class="col-md-3 col-sm-3 col-xs-12 fh5co-footer-link">
                     <h3>Top Museums</h3>
+                    <ul>
+                        @foreach($mostVisited as $place)
+                        <li><a
+                                href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">{{$place->title}}</a>
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12 fh5co-footer-link">
                     <h3>Top Towers</h3>
+                    <ul>
+                        @foreach($towers as $place)
+                        <li><a
+                                href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">{{$place->title}}</a>
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 fh5co-footer-link">
                     <h3>Contact</h3>
-                    <strong>Company: </strong>
+                    @if($settings->company != null)
+                    <strong>Company: </strong> {{$settings->company}}
+                    @endif
                     <br>
-                    <strong>Address: </strong>
+                    @if($settings->address != null)
+                    <strong>Address: </strong> {{$settings->address}}
+                    @endif
                     <br>
-                    <strong>Phone: </strong>
+                    @if($settings->phone != null)
+                    <strong>Phone: </strong> {{$settings->phone}}
+                    @endif
                     <br>
-                    <strong>Fax: </strong>
+                    @if($settings->fax != null)
+                    <strong>Fax: </strong> {{$settings->fax}}
+                    @endif
                     <br>
-                    <strong>Email : </strong>
+                    @if($settings->email != null)
+                    <strong>Email : </strong> {{$settings->email}}
+                    @endif
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center">
                     <p class="fh5co-social-icons">
-                        <a href="" target="_blank"><i class="icon-twitter2"></i></a>
-                        <a href="" target="_blank"><i class="icon-facebook2"></i></a>
-                        <a href="" target="_blank"><i class="icon-instagram"></i></a>
-                        <a href="" target="_blank"><i class="icon-youtube"></i></a>
+                        @if($settings->twitter != null)
+                        <a href="{{$settings->twitter}}" target="_blank"><i class="icon-twitter2"></i></a>@endif
+                        @if($settings->facebook != null)
+                        <a href="{{$settings->facebook}}" target="_blank"><i class="icon-facebook2"></i></a>@endif
+                        @if($settings->instagram != null)
+                        <a href="{{$settings->instagram}}" target="_blank"><i class="icon-instagram"></i></a>@endif
+                        @if($settings->youtube != null)
+                        <a href="{{$settings->youtube}}" target="_blank"><i class="icon-youtube"></i></a>@endif
                     </p>
-                    <p>&copy; Copyright 2022 <i class="icon-heart3"></i> Makin, All Rights Reserved.</p>
+                    <p>&copy; Copyright 2022 <i class="icon-heart3"></i> {{$settings->title}}, All Rights Reserved.</p>
                 </div>
             </div>
         </div>
