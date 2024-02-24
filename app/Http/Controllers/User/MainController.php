@@ -118,7 +118,7 @@ class MainController extends Controller
             return redirect()->route('place_detail',['id' => $place->id, 'slug'=>$place->slug]);
         }
         else {
-            //return redirect()->route('placeslist', ['search'=>$search]);
+            return redirect()->route('placeslist', ['search'=>$search]);
         }
     }
 
