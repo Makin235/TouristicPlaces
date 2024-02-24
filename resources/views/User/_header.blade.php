@@ -2,6 +2,7 @@
 @livewireScripts
 @endsection
 
+
 <div class="top-header">
 
 </div>
@@ -14,6 +15,7 @@
             <span style="  padding-left: 30px;padding-top:20px " class="col-md-6 col-lg-6 col-sm-6">
                 <form action="{{route('getplace')}}" method="post">
                     @csrf
+                    @livewire('search')
                     @livewireScripts
                     <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
                 </form>
