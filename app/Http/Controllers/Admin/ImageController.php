@@ -41,7 +41,7 @@ class ImageController extends Controller
     {
         $data = new Image;
         $data->title = $request->input('title');
-        $data->image = Storage::putFile('image', $request->file('image'));
+        $data->image = Storage::putFile('public/image', $request->file('image'));
         $data->place_id = $place_id;
         $data->save();
         return redirect()->route('admin_image_show', ['place_id'=>$place_id])->with('success', 'Image Added Successfully.');
